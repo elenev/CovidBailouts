@@ -18,7 +18,7 @@ close all;
 respath='./';
 if ~exist('resfile','var') 
     disp('resfile not defined. Opening default file instead.');
-    resfile='res_20210210_xi88safe_s130'; 
+    resfile='res_xi88midxigrid_s130'; 
 %    resfile='res_20190808_bench_s19c46'; 
 end
 load([respath,resfile,'.mat']);
@@ -31,7 +31,7 @@ end
 
 % Update params
 augmentParams=false;
-expdef='experdef_20190830.m';
+expdef='experdef.m';
 if augmentParams
     run(expdef);
     mobj=mobj.augmentParams(allexpers.bench.params);

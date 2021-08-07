@@ -1,14 +1,15 @@
 function welfare(numClust)
 
+if nargout==0
+    numClust=10;
+end
 
-bench_experdef = '20210210';
-experdef = '20210210';
 benchexper = 'xi88midxigrid';
 
-results_files = dir(['sim_res_',experdef,'_*_s130.mat']);
+results_files = dir('sim_res_*.mat');
 
-pzns_res = ['res_',bench_experdef,'_',benchexper,'_s130.mat'];
-pzns_simres = ['sim_res_',bench_experdef,'_',benchexper,'_s130.mat'];
+pzns_res = ['res_',benchexper,'.mat'];
+pzns_simres = ['sim_res_',benchexper,'.mat'];
 %bench.pzns=load(['pzns_',pzns_res]);
 bench.res=load(pzns_res);
 bench.sim=load(pzns_simres);
@@ -71,11 +72,7 @@ for i=1:size(results_files,1)
    
 end
 
-%for j=1:4
-%    writetable(EVs,'Results/statsexog_res_20200124_bench_s130.xls','Sheet',j,'WriteRowNames',true);
-%end
-%writetable(paramout,'Results/statsexog_res_20200124_bench_s130.xls','Sheet','params','WriteRowNames',true);
-writetable(EVs,['Results/welfare_',experdef,'_',benchexper,'_s130.xls'], ...
+writetable(EVs,['Results/welfare_',benchexper,'_s130.xls'], ...
 	'WriteRowNames',true,'Sheet',sprintf('NumClust %d',numClust));
 end
 

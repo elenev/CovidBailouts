@@ -5,13 +5,6 @@ close all;
 respath='./';
 outpath='./Results/';
 
-%startexperdef = '20200403';
-startexperdef = '20210210';
-otherexperdef = '20210210';
-suffix = 's130';
-
-%startecon = 'nuS02xi88';
-%otherecon = 'nuS02xi88pandemic';
 startecon = 'xi88midxigrid';
 otherecon = 'xi88pandemic';
 
@@ -41,8 +34,8 @@ N_policies = length(from_mit);
 N_policies_alt = length(from_mit_alt);
 
 % Define file names
-start_resfile = ['res_',startexperdef,'_',startecon,'_',suffix];
-resfile = ['res_',otherexperdef,'_',otherecon,'_',suffix];
+start_resfile = ['res_',startecon];
+resfile = ['res_',otherecon];
 
 outfile=['GRbar_',resfile];
 

@@ -1,4 +1,11 @@
-if usejava('desktop')
+if ~exist('batchmode','var')
+	if usejava('desktop')
+		batchmode=true;
+	else
+		batchmode=false;
+	end
+end
+if ~batchmode
    clear; 
 end
 close all;
@@ -31,8 +38,7 @@ end
 
 % path to file with experiment definition
 if ~exist('exper_path','var')
-    exper_path='env_xi88safe.mat';
-	%exper_path='res_2019_9_19_11_9.mat';
+    exper_path='env_xi88.mat';
 end
 if ~exist('maxit','var')
     %maxit=100;

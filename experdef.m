@@ -49,7 +49,7 @@ phi1=0;
 n0=1.4;
 
 % intermediary
-xi=0.93;
+xi=0.88;
 sigma_eps=0.019; 
 rho=0.0;
 sigmaI=7.0; 
@@ -212,8 +212,7 @@ params.ombar = ombar;
 params.prob_pandemic = prob_pandemic;
 
 
-% Define grids
-
+% Define grid
 % Benchmark Grid
 startgrid.label = 'ini0';
 startgrid.KBpts=[1.65,1.75, 1.84, 1.98, 2.05, 2.10, 2.26, 2.45];
@@ -228,47 +227,6 @@ semifinegrid.LBpts=[0.225,0.30,0.325,0.35,0.37,0.39,0.40,0.41,0.42,0.43,0.44,0.4
 semifinegrid.WIpts=[-0.04,-0.03,-0.02,-0.01,0,0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.055,0.06,0.065,0.07,0.08,0.09,0.10,0.12,0.14,0.16,0.20,0.27];
 semifinegrid.BGpts=[0.1833,0.4667,0.7500, 1.0333,1.3167,1.4000,1.7000];
 
-
-allsaverstartgrid=startgrid;
-allsaverstartgrid.KBpts=linspace(2,2.5,8);
-allsaverstartgrid.LBpts=linspace(0.4,0.65,8);
-
-allsaverfinegrid=allsaverstartgrid;
-allsaverfinegrid.LBpts = [0.39,0.40,0.41,0.42,0.43,0.44,0.46,0.47,0.48,0.49,0.5,0.55,0.6];
-
-safesafestartgrid = startgrid;
-%safesafestartgrid.KBpts=linspace(1.7,2.2,8);
-safesafestartgrid.LBpts=linspace(0.35,0.55,8);
-safesafestartgrid.WIpts=linspace(0,0.15,8);
-
-safesafefinegrid = safesafestartgrid;
-safesafefinegrid.LBpts = [0.325,0.35,0.37,0.39,0.40,0.41,0.42,0.43,0.44,0.46,0.47,0.48,0.49,0.5,0.55];
-safesafefinegrid.WIpts = [-0.01, 0,0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.055,0.06,0.065,0.07,0.08,0.09,0.10,0.12,0.14,0.16,0.20];
-
-saferiskystartgrid=startgrid;
-saferiskystartgrid.KBpts=linspace(1.7,2.3,8);
-saferiskystartgrid.LBpts=linspace(0.35,0.55,8);
-
-saferiskyfinegrid=saferiskystartgrid;
-saferiskyfinegrid.LBpts = [0.325,0.35,0.37,0.39,0.40,0.41,0.42,0.43,0.44,0.46,0.47,0.48,0.49,0.5,0.55];
-saferiskyfinegrid.WIpts = semifinegrid.WIpts;
-
-sigI0startgrid = startgrid;
-sigI0startgrid.LBpts=linspace(0.25, 0.65,8);
-sigI0startgrid.WIpts=[0,0.03,0.05,0.1,0.15,0.25];
-
-sigI0semifinegrid = semifinegrid;
-sigI0semifinegrid.WIpts=[-0.06,-0.02,-0.01,0,0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.055,0.06,0.065,0.07,0.075,0.08,0.10,0.125,0.15];
-
-sigI20startgrid = startgrid;
-sigI20startgrid.WIpts=[0,0.03,0.05,0.1,0.15,0.25,0.3,0.4];
-sigI20startgrid.BGpts=[0,0.1833,0.4667,0.7500,1.0333,1.3167,1.4000];
-
-sigI20semifinegrid = semifinegrid;
-sigI20semifinegrid.WIpts=[0,0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.055,0.06,0.065,0.07,0.08,0.09,0.10,0.12,0.14,0.16,0.20,0.27];
-sigI20semifinegrid.BGpts=[0.1833,0.4667,0.7500, 1.0333,1.3167,1.4000];
-
-% xi85 and xi80 grid
 midxistartgrid.KBpts=[1.65,1.75, 1.84, 1.98, 2.05, 2.10, 2.26, 2.45];
 midxistartgrid.LBpts=linspace(0.10,0.45,8);
 midxistartgrid.WIpts=[0,0.03,0.05,0.1,0.125,0.15,0.25,0.3,0.4];
@@ -279,147 +237,22 @@ midxisemifinegrid.LBpts=[0.19,0.22,0.24,0.25,0.26,0.27,0.28,0.29,0.30,0.31,0.32,
 midxisemifinegrid.WIpts=[0,0.02,0.05,0.06,0.07,0.08,0.085,0.09,0.095,0.10,0.105,0.11,0.115,0.12,0.13,0.14,0.15,0.17];
 midxisemifinegrid.BGpts=[0.1833,0.4667,0.7500, 1.0333,1.3167,1.4000,1.6000];
 
-% Low-xi grid
-lowxistartgrid.KBpts=[1.65,1.75, 1.84, 1.98, 2.05, 2.10, 2.26, 2.45];
-lowxistartgrid.LBpts=linspace(0.07,0.4,8);
-lowxistartgrid.WIpts=[0,0.05,0.1,0.125,0.15,0.20,0.25,0.3,0.4];
-lowxistartgrid.BGpts=[0,0.1833,0.4667,0.7500,1.0333,1.3167,1.4000,1.6000];
+testgrid.KBpts = linspace(semifinegrid.KBpts(1),semifinegrid.KBpts(end),3);
+testgrid.LBpts = linspace(semifinegrid.LBpts(1),semifinegrid.LBpts(end),3);
+testgrid.WIpts = linspace(semifinegrid.WIpts(1),semifinegrid.WIpts(end),3);
+testgrid.BGpts = linspace(semifinegrid.BGpts(1),semifinegrid.BGpts(end),3);
 
-lowxisemifinegrid.KBpts=[1.65,1.75, 1.84, 1.98, 2.05, 2.10, 2.26, 2.45];
-lowxisemifinegrid.LBpts=[0.10,0.14,0.16,0.18,0.20,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.30,0.32,0.35];
-lowxisemifinegrid.WIpts=[0,0.025,0.05,0.08,0.10,0.11,0.12,0.13,0.14,0.15,0.16,0.18,0.20,0.22,0.24,0.26,0.30];
-lowxisemifinegrid.BGpts=[0.1833,0.4667,0.7500, 1.0333,1.3167,1.4000,1.6000];
-
-% High-xi grid
-hixistartgrid = startgrid;
-hixistartgrid.BGpts = [0.4667,0.7500,1.0333,1.3167,1.4000,1.6000,2.0,2.4];
-
-hixisemifinegrid = semifinegrid;
-hixisemifinegrid.BGpts=[0.4667,0.7500,1.0333,1.3167,1.4000,1.6000,2.0,2.4];
-
-% Kappa grid
-kappastartgrid = startgrid;
-kappastartgrid.LBpts = lowxistartgrid.LBpts;
-kappasemifinegrid = semifinegrid;
-kappasemifinegrid.LBpts = lowxistartgrid.LBpts;
-
-
-% High betaB grid
-betaBstartgrid = startgrid;
-betaBstartgrid.KBpts = startgrid.KBpts + 0.15;
-betaBstartgrid.LBpts = startgrid.LBpts - 0.07;
- 
-betaBsemifinegrid = semifinegrid;
-betaBsemifinegrid.KBpts = semifinegrid.KBpts + 0.15;
-betaBsemifinegrid.LBpts = semifinegrid.LBpts - 0.07;
-
-% Low betas grid
-betaSstartgrid = startgrid;
-betaSstartgrid.KBpts = startgrid.KBpts - 0.2;
-betaSstartgrid.LBpts = startgrid.LBpts - 0.07;
-
-betaSsemifinegrid = semifinegrid;
-betaSsemifinegrid.KBpts = semifinegrid.KBpts - 0.2;
-betaSsemifinegrid.LBpts = semifinegrid.LBpts - 0.07;
-
-% Assemble grids
+% Assemble grids, if more than one
 benchgrid = struct('startgrid',startgrid,'finegrid',semifinegrid);
-allsavergrid = struct('startgrid',allsaverstartgrid,'finegrid',allsaverfinegrid);
-safesafegrid = struct('startgrid',safesafestartgrid,'finegrid',safesafefinegrid);
-saferiskygrid = struct('startgrid',saferiskystartgrid,'finegrid',saferiskyfinegrid);
-lowxigrid = struct('startgrid',lowxistartgrid,'finegrid',lowxisemifinegrid);
 midxigrid = struct('startgrid',midxistartgrid,'finegrid',midxisemifinegrid);
-hixigrid = struct('startgrid',hixistartgrid,'finegrid',hixisemifinegrid);
-betaBgrid = struct('startgrid',betaBstartgrid,'finegrid',betaBsemifinegrid);
-betaSgrid = struct('startgrid',betaSstartgrid,'finegrid',betaSsemifinegrid);
-kappagrid = struct('startgrid',kappastartgrid,'finegrid',kappasemifinegrid);
-%auggrid = struct('startgrid',augstartgrid,'finegrid',augsemifinegrid);
-sigI0grid = struct('startgrid',sigI0startgrid,'finegrid',sigI0semifinegrid);
-sigI20grid = struct('startgrid',sigI20startgrid,'finegrid',sigI20semifinegrid);
-
-grids = struct('benchgrid',benchgrid, ...
-    'lowxigrid',lowxigrid, ...
-    'midxigrid',midxigrid, ...
-	'hixigrid',hixigrid, ...
-	'kappagrid',kappagrid,...
-    'betaBgrid',betaBgrid, ...
-    'betaSgrid',betaSgrid,...
-    'allsavergrid',allsavergrid,...
-    'safesafegrid',safesafegrid,...
-    'saferiskygrid',saferiskygrid,...
-    'sigI0grid',sigI0grid,...
-	'sigI20grid',sigI20grid);
+testgrid = struct('startgrid',testgrid,'finegrid',testgrid);
+grids = struct('benchgrid',benchgrid,'midxigrid',midxigrid,'testgrid',testgrid);
 
 % Define experiments as modifications to base
 expers_macropru = {'xpbase',{'take_Lscale_as_given','no'};
                 'bench',{};
-				'xi70',{'xivec',[0.70,0.70];'grid','lowxigrid'};
-                'xi75',{'xivec',[0.75,0.75];'grid','lowxigrid'};
-                'xi80',{'xivec',[0.80,0.80];'grid','midxigrid'};
-                'xi85',{'xivec',[0.85,0.85];'grid','midxigrid'};
-                'xi90',{'xivec',[0.90,0.90]};
-				'xi92',{'xivec',[0.92,0.92]};
-				'xi94',{'xivec',[0.94,0.94]};
-				'xi96',{'xivec',[0.96,0.96]};
-                'xi975',{'xivec',[0.975,0.975];'grid','hixigrid'};
-				'kappa01',{'kappa',0.01;'grid','kappagrid'};
-                'xi9395',{'xivec',[0.93,0.95]};
-				'xi81midxigrid',{'xivec',[0.81,0.81];'grid','midxigrid'};
-                'xi82midxigrid',{'xivec',[0.82,0.82];'grid','midxigrid'};
-                'xi83midxigrid',{'xivec',[0.83,0.83];'grid','midxigrid'};
-                'xi84midxigrid',{'xivec',[0.84,0.84];'grid','midxigrid'};
-                'xi86midxigrid',{'xivec',[0.86,0.86];'grid','midxigrid'};
-                'xi87midxigrid',{'xivec',[0.87,0.87];'grid','midxigrid'};
                 'xi88midxigrid',{'xivec',[0.88,0.88];'grid','midxigrid'};
-                'xi89midxigrid',{'xivec',[0.89,0.89];'grid','midxigrid'};
-                'xi91benchgrid',{'xivec',[0.91,0.91];'grid','benchgrid'};
-                'xi93benchgrid',{'xivec',[0.93,0.93];'grid','benchgrid'};
-                'xi95benchgrid',{'xivec',[0.95,0.95];'grid','benchgrid'};
-                'xi97benchgrid',{'xivec',[0.97,0.97];'grid','hixigrid'};
-				'xi9294',{'xivec',[0.92,0.94]};
-				'xi9195',{'xivec',[0.91,0.95]};
-				'xi9295',{'xivec',[0.92,0.95]};
-				'FLbench',{'CBS',true;'chi1adj',0;'FLnodef',true;'pibar',0;'grid','allsavergrid';};
-				'FLwithdef',{'CBS',true;'chi1adj',0;'grid','allsavergrid';};
-                'benchsafesafe',{'FLnodef',true;'rho',100;'grid','safesafegrid'};
-                'benchsafesafesigI0',{'FLnodef',true;'rho',100;'sigmaI',0;'grid','safesafegrid'};
-                'benchsaferisky',{'FLnodef',true};
-				'benchriskysafesigI0',{'sigmaI',0;'rho',100;'grid','sigI0grid'};
-				'benchriskysafe',{'rho',100;};
-                'benchriskierrisky',{'phi1',1;};
-				'sigI0',{'sigmaI',0;'grid','sigI0grid'};
-				'sigI8',{'sigmaI',8};
-				'sigI20rho100',{'sigmaI',20;'rho',100;'grid','sigI20grid'};
-				'sigI8xi91',{'sigmaI',8;'xivec',[0.91,0.91]};
-				'sigI8xi95',{'sigmaI',8;'xivec',[0.95,0.95]};
-				'sigI0xi91',{'sigmaI',0;'xivec',[0.91,0.91];'grid','sigI0grid'};
-				'sigI0xi95',{'sigmaI',0;'xivec',[0.95,0.95];'grid','sigI0grid'};
-				'benchriskysafexi91',{'rho',100;'xivec',[0.91,0.91]};
-				'benchriskysafexi95',{'rho',100;'xivec',[0.95,0.95]};
-				'noshieldsameratexi91',{'shieldI',0;'xivec',[0.91,0.91]};
-				'noshieldsamerate',{'shieldI',0};
-				'noshieldsameratexi95',{'shieldI',0;'xivec',[0.95,0.95]};
-				'betaBupxi91',{'betaB',params.betaB+0.0015;'xivec',[0.91,0.91]};
-				'betaBup',{'betaB',params.betaB+0.0015};
-				'betaBupxi95',{'betaB',params.betaB+0.0015;'xivec',[0.95,0.95]};
-				'betaSdownxi91',{'betaS',params.betaS-0.0015;'xivec',[0.91,0.91]};
-				'betaSdown',{'betaS',params.betaS-0.0015};
-				'betaSdownxi95',{'betaS',params.betaS-0.0015;'xivec',[0.95,0.95]};
-				'benchriskierriskyxi91',{'phi1',1;'xivec',[0.91,0.91]};
-				'benchriskierriskyxi95',{'phi1',1;'xivec',[0.95,0.95]};
-				'altshares',{'PB',0.421;'gammaB',0.761};
-				'altsharesxi91',{'PB',0.421;'gammaB',0.761;'xivec',[0.91,0.91]};
-				'altsharesxi95',{'PB',0.421;'gammaB',0.761;'xivec',[0.95,0.95]};
-				'nosavers',{'chiLinear',50;'chi1adj',0};
-				'nosaversxi91',{'chiLinear',50;'chi1adj',0;'xivec',[0.91,0.91]};
-				'nosaversxi95',{'chiLinear',50;'chi1adj',0;'xivec',[0.95,0.95]};
-				'highchi1adj',{'chi1adj',2*params.chi1adj};
-				'sigS010',{'sigmaS',10};
-				'sigS100',{'sigmaS',100};
-				'nuS02',{'nuS',2};
-				'nuS02xi88',{'nuS',2;'xivec',[0.88,0.88]};
-				'nuS02xi88pandemic',{'nuS',2;'xivec',[0.88,0.88];'prob_pandemic',[0.01,0.5]};	
-				'xi88pandemic',{'xivec',[0.88,0.88];'grid','midxigrid';'prob_pandemic',[0.01,0.5]};
+                'xi88pandemic',{'xivec',[0.88,0.88];'grid','midxigrid';'prob_pandemic',[0.01,0.5]};
 				'xi88safe',{'xivec',[0.88,0.88];'grid','midxigrid';'rho',100};
 				};
 

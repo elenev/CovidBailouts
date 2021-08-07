@@ -1,0 +1,10 @@
+
+*.asv
+env_*.mat
+res_*.mat
+sim_res_*.mat
+GR_*.mat
+stat*.xls
+fxfun.m
+jacfun.m
+experdef.txt

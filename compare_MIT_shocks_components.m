@@ -5,10 +5,6 @@ close all;
 respath='./';
 outpath='./Results/';
 
-startexperdef = '20210210';
-otherexperdef = '20210210';
-suffix = 's130';
-
 startecon = 'xi88midxigrid';
 otherecon = 'xi88pandemic';
 
@@ -24,8 +20,8 @@ pollabel = {'Markov','+ Idiosync. Vol','+ Idiosync. Mean','+ New Normal'};
 keylabel = {'markov','vol','mean','newnormal'};
 
 % Define file names
-start_resfile = ['res_',startexperdef,'_',startecon,'_',suffix];
-resfile = ['res_',otherexperdef,'_',otherecon,'_',suffix];
+start_resfile = ['res_',startecon];
+resfile = ['res_',otherecon];
 
 outfile=['GRbar_',resfile];
 

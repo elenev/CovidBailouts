@@ -1,6 +1,14 @@
-if usejava('desktop')
+if ~exist('batchmode','var')
+	if usejava('desktop')
+		batchmode=true;
+	else
+		batchmode=false;
+	end
+end
+if ~batchmode
    clear; 
 end
+close all;
 
 % ===========================================
 % program control
@@ -8,11 +16,11 @@ end
 
 % name of file with experiment definitions
 if ~exist('experdef_file','var')
-    experdef_file='experdef_20210210';
+    experdef_file='experdef';
 end
 % name of experiment
 if ~exist('expername','var')
-    expername='xi88safe'; %bench_ini0
+    expername='xi88midxigrid'; %bench_ini0
 end
 
 % possible values 'no_guess', 'guess'
@@ -21,7 +29,7 @@ if ~exist('guess_mode','var')
 end
 % path to file with initial guess; not used if guess_mode='no_guess'
 if ~exist('guess_path','var')
-    guess_path='res_20210210_xi88safe_i100';
+    guess_path='res_xi88midxigrid_i100';
 end
 
 % path and file name for output file

@@ -1,7 +1,12 @@
-if usejava('desktop')
+if ~exist('batchmode','var')
+	if usejava('desktop')
+		batchmode=true;
+	else
+		batchmode=false;
+	end
+end
+if ~batchmode
    clear; 
-else
-    ver;
 end
 close all;
 
@@ -11,20 +16,18 @@ close all;
 respath='./';
 outpath='./Results/';
 
-%resfile='res_20200403_nuS02xi88_s130';
-%start_resfile = resfile;
+if ~exist('start_resfile','var') 
+    start_resfile='res_xi88midxigrid'; 
+end
+if ~exist('resfile','var') 
+    resfile='res_xi88pandemic';  
+end
 
-%resfile = 'res_20210210_nuS02xi88pandemic_s130';
-%start_resfile = 'res_20200403_nuS02xi88_s130';
-
-%start_resfile = 'res_20210210_xi88midxigrid_s130';
-start_resfile = 'res_20210210_xi88safe_s130';
-
-%resfile = 'res_20210210_xi88pandemic_s130';
-resfile = start_resfile;
+%resfile = start_resfile;
 
 % number of periods
-N_runs=10000;
+%N_runs=10000;
+N_runs = 10;
 NT_sim=25;
 
 full_paths = true;

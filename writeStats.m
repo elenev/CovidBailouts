@@ -4,26 +4,9 @@
 clc; clear;
 
 % Economies
-bench_experdef = '20210210';
-experdef = '20210210';
-suffix = 's130';
 bench_econ = 'xi88midxigrid';
-%other_econs = {'xi70','xi75','xi80','xi85','xi90','xi91benchgrid','xi96','xi9295','xi9294','xi9195'};
 other_econs = {'xi88pandemic'};
 
-include_all = false;
-if include_all
-	dircell_sim = struct2cell( dir(['sim_res_',experdef,'_*_',suffix,'.mat']) );
-	dircell_irf = struct2cell( dir(['GR_res_',experdef,'_*_',suffix,'.mat']) );
-	auto_econs_sim = cellfun(@(x)extractBetween(x,['sim_res_',experdef,'_'],['_',suffix,'.mat']), ...
-		dircell_sim(1,:),'UniformOutput',false);
-	auto_econs_irf = cellfun(@(x)extractBetween(x,['GR_res_',experdef,'_'],['_',suffix,'.mat']), ...
-		dircell_irf(1,:),'UniformOutput',false);
-	auto_econs_sim=[auto_econs_sim{:}];
-	auto_econs_irf=[auto_econs_irf{:}];
-	auto_econs = intersect(auto_econs_sim,auto_econs_irf);
-	other_econs = setdiff(auto_econs,{bench_econ});
-end
 		   
 econs = [{bench_econ},other_econs];
 
@@ -43,7 +26,7 @@ unitless = {'corrG','corrG_1','corrOm','corrOm_1', ...
 	'corrY','corrY_1','corrY_gr','corrY_gr_1','AC'};
 isUnitless = ismember(colnames,unitless);
 
-bench_simres = load(['sim_res_',bench_experdef,'_',bench_econ,'_',suffix,'.mat']);
+bench_simres = load(['sim_res_',bench_econ,'_',suffix,'.mat']);
 
 deffmt = '%s,%0.3f\n';
 
