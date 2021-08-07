@@ -16,7 +16,7 @@ excel_export_means = true;
 respath='./';
 outpath='./Results/';
 if ~exist('resfile','var')
-    resfile='res_20210210_xi88safe_s130';
+    resfile='res_xi88midxigrid';
 end
 
 load([respath,resfile,'.mat']);

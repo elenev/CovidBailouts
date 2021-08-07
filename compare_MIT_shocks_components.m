@@ -26,16 +26,12 @@ resfile = ['res_',otherecon];
 outfile=['GRbar_',resfile];
 
 % Load files
-irfs = load([respath, 'GR_',    start_resfile, '.mat']);
-mit = load([respath, 'MIT_',   start_resfile, '.mat']);
+irfs  = load([respath, 'GR_',    start_resfile, '.mat']);
+mit   = load([respath, 'MIT_',   start_resfile, '.mat']);
 mitpt = load([respath, 'MITPT_', resfile,       '.mat']);
-
 
 N_irf = numel( irfs.simseries_mean );
 N_mit = numel( mit.simseries_mean );
-
-	   
-
 
 % Extract and arrange imported series
 simseries_mean_start = irfs.simseries_mean;

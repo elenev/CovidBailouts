@@ -43,8 +43,6 @@ outfile=['GRbar_',resfile];
 irfs = load([respath, 'GR_',    start_resfile, '.mat']);
 mit1 = load([respath, 'MIT_',   start_resfile, '.mat']);
 mit2 = load([respath, 'MITPT_', resfile,       '.mat']);
-% mit1 = load([respath, 'MITshort_',   start_resfile, '.mat']);
-% mit2 = load([respath, 'MITshortPT_', resfile,       '.mat']);
 
 mit1.simseries_mean = mit1.simseries_mean(1:11);
 

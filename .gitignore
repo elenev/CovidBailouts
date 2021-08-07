@@ -8,3 +8,5 @@ stat*.xls
 fxfun.m
 jacfun.m
 experdef.txt
+
+.DS_Store

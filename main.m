@@ -48,6 +48,9 @@ for exper = expers
    resfile = ['res_',expername];
    
    sim_stationary;
+   
+   % Anticipated (+ prob ) shock IRFs
+   sim_trans_cluster;
 end
 
 %% Simulate MIT shocks
