@@ -68,11 +68,11 @@ for i=1:size(results_files,1)
    EVs{i,3} = probs' * delta_WB * alt_probs;
    EVs{i,4} = probs' * delta_WS * alt_probs;
    EVs{i,5} = probs' * totalDelta * alt_probs;
-   EVs.Properties.RowNames(i) = parts(4);
+   EVs.Properties.RowNames(i) = parts(3);
    
 end
 
-writetable(EVs,['Results/welfare_',benchexper,'_s130.xls'], ...
+writetable(EVs,['Results/welfare_',benchexper,'.xls'], ...
 	'WriteRowNames',true,'Sheet',sprintf('NumClust %d',numClust));
 end
 

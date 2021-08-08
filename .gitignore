@@ -1,10 +1,16 @@
 
 *.asv
+*.pdf
+*.eps
+*.xls
+*.xlsx
 env_*.mat
 res_*.mat
 sim_res_*.mat
 GR_*.mat
 stat*.xls
+MIT*.mat
+MITPT*.mat
 fxfun.m
 jacfun.m
 experdef.txt

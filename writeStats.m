@@ -26,7 +26,7 @@ unitless = {'corrG','corrG_1','corrOm','corrOm_1', ...
 	'corrY','corrY_1','corrY_gr','corrY_gr_1','AC'};
 isUnitless = ismember(colnames,unitless);
 
-bench_simres = load(['sim_res_',bench_econ,'_',suffix,'.mat']);
+bench_simres = load(['sim_res_',bench_econ,'.mat']);
 
 deffmt = '%s,%0.3f\n';
 
@@ -68,7 +68,7 @@ ii = 1;
 for econCounter = 1:numel(econs)
 	econ = econs{econCounter};
 	if econCounter > 1
-		simres = load(['sim_res_',experdef,'_',econ,'_',suffix,'.mat']);
+		simres = load(['sim_res_',econ,'.mat']);
 	else
 		simres = bench_simres;
 		
@@ -84,9 +84,6 @@ for econCounter = 1:numel(econs)
 			end
 		end
 	end
-	
-	% IRFs
-	%irfres = load(['GR_res_',experdef,'_',econ,'_',suffix,'.mat']);
 	
 	[~,varIdx,varIdx_bench] = intersect( simres.dispnames, ...
 			bench_simres.dispnames, 'stable' );
@@ -243,7 +240,7 @@ for econCounter = 1:numel(econs)
 % 	
 % 	% MIT shocks
 % 	try
-% 		mitfilename = ['MIT_res_',experdef,'_',econ,'_',suffix,'.mat'];
+% 		mitfilename = ['MIT_res_',econ,'.mat'];
 % 		mitres = load(mitfilename);
 % 		
 % 		
@@ -255,7 +252,7 @@ for econCounter = 1:numel(econs)
 % 	
 % 	% MIT shocks combined with transitions from bench
 % 	try
-% 		mitPTfilename = ['MITPT_res_',experdef,'_',econ,'_',suffix,'.mat'];
+% 		mitPTfilename = ['MITPT_res_',econ,'.mat'];
 % 		mitPTres = load(mitPTfilename);
 % 		
 % 		addlCellDict = processMITshock( mitPTres.simseries_mean, 
@@ -270,7 +267,7 @@ end
 
 try
 	% Process welfare
-	welfare = readtable( ['Results\welfare_',experdef,'_',bench_econ,'_',suffix,'.xls'],'Sheet','NumClust 10');
+	welfare = readtable( ['Results\welfare_',bench_econ,'.xls'],'Sheet','NumClust 10');
 	for econCounter=1:size(welfare,1)
 		wId = sprintf('comp - %s - u - cvwelfare - mean', welfare.Row{econCounter} );
 		value = welfare.Total(econCounter);
@@ -284,7 +281,7 @@ catch err
 end
 
 % Process benchmark errors
-errprct = readtable( ['Results\errstats_res_',experdef,'_',bench_econ,'_',suffix,'.xls'] );
+errprct = readtable( ['Results\errstats_res_',bench_econ,'.xls'] );
 labels = errprct.Properties.VariableNames;
 for eqnCounter = 1:size(errprct,1)
 	for prctCounter = 1:size(errprct,2)

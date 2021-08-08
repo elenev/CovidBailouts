@@ -12,10 +12,12 @@ no_par_processes = feature('numcores');
 batchmode = true;
 
 %% Solve and simulate model
+disp('Solving models.')
 expers = {'xi88midxigrid', 'xi88pandemic'};
 
 for exper = expers 
    % Initial round
+   disp('Economy: 
    expername = [exper{:},'_ini0'];
    maxit = 100;
    guess_mode = 'no_guess';
@@ -63,6 +65,9 @@ sim_trans_mit;
 resfile = 'res_xi88midxigrid';
 start_resfile = 'res_xi88midxigrid';
 sim_trans_mit;
+
+%% Comparative welfare measure
+welfare(10);
 
 %% Make plots
 compare_MIT_shocks_2;
