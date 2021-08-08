@@ -26,8 +26,7 @@ end
 %resfile = start_resfile;
 
 % number of periods
-%N_runs=10000;
-N_runs = 10;
+N_runs=10000;
 NT_sim=25;
 
 full_paths = true;

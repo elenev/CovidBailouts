@@ -4,8 +4,8 @@
 
 % Results folder will be filled with
 % - PDF and EPS versions of all graphs
-% - simres.mat file containing a hashmap storing every 
-%   statistic cited in tables and text of the paper
+% - simres.mat file containing a hashmap storing statistics cited in tables
+%   and text of the paper
 
 %% Settings
 no_par_processes = feature('numcores');
@@ -16,43 +16,49 @@ disp('Solving models.')
 expers = {'xi88midxigrid', 'xi88pandemic'};
 
 for exper = expers 
-   % Initial round
-   disp('Economy: 
-   expername = [exper{:},'_ini0'];
-   maxit = 100;
-   guess_mode = 'no_guess';
-   outfname=['env_',expername,'.mat'];
+	disp(['Economy: ', exper{:}]);
+	
+	% Initial round
+	disp(' - Initial round');
    
-   main_create_env;
+	expername = [exper{:},'_ini0'];
+	maxit = 100;
+	guess_mode = 'no_guess';
+	outfname=['env_',expername,'.mat'];
    
-   exper_path = outfname;
-   outname = ['res_',expername,'.mat'];
-   price_zns = false;
+	main_create_env;
    
-   main_run_exper;
+	exper_path = outfname;
+	outname = ['res_',expername,'.mat'];
+	price_zns = false;
    
-   % Fine grid round
-   expername = exper{:};
-   maxit = 30;
-   guess_mode = 'guess';
-   guess_path = outname;
-   outfname=['env_',expername,'.mat'];
+	main_run_exper;
    
-   main_create_env;
+    % Fine grid round
+	disp(' - Fine grid round');
+    expername = exper{:};
+    maxit = 30;
+    guess_mode = 'guess';
+    guess_path = outname;
+    outfname=['env_',expername,'.mat'];
    
-   exper_path = ['env_',expername,'.mat'];
-   outname = ['res_',expername,'.mat'];
+	main_create_env;
+   
+    exper_path = ['env_',expername,'.mat'];
+    outname = ['res_',expername,'.mat'];
    price_zns = true;
    
-   main_run_exper;
+    main_run_exper;
    
-   % Simulate
-   resfile = ['res_',expername];
+    % Simulate
+	disp(' - Simulate');
+    resfile = ['res_',expername];
    
-   sim_stationary;
+    sim_stationary;
    
-   % Anticipated (+ prob ) shock IRFs
-   sim_trans_cluster;
+    % Anticipated (+ prob ) shock IRFs
+	disp(' - IRFs')
+    sim_trans_cluster;
 end
 
 %% Simulate MIT shocks

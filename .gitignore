@@ -8,7 +8,6 @@ env_*.mat
 res_*.mat
 sim_res_*.mat
 GR_*.mat
-stat*.xls
 MIT*.mat
 MITPT*.mat
 fxfun.m
