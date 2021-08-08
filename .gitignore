@@ -1,0 +1,17 @@
+
+*.asv
+*.pdf
+*.eps
+*.xls
+*.xlsx
+env_*.mat
+res_*.mat
+sim_res_*.mat
+GR_*.mat
+MIT*.mat
+MITPT*.mat
+fxfun.m
+jacfun.m
+experdef.txt
+
+.DS_Store
